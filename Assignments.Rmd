@@ -1,21 +1,18 @@
 ---
 title: "Assignments"
 output:
-  word_document:
-    toc: yes
-    toc_depth: '1'
   html_document:
-    toc: yes
-    toc_float: yes
-    collapsed: no
-    number_sections: no
+    toc: true
+    toc_float: true
+    collapsed: false
+    number_sections: false
     toc_depth: 1
-  pdf_document:
-    toc: no
-    toc_depth: '1'
+    #code_folding: hide
 ---
 
-
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(message=FALSE,warning=FALSE, cache=TRUE)
+```
 This page will contain all the assignments you submit for the class.
 
 
@@ -172,3 +169,12 @@ What does this code do? Explain what each line is doing.
 Answer: The library code loads the desired packages.  In this case, it is loading the packages called 'map' and 'ggplot2'.  The combination of the 'map' package and the 'ggplot2' package allows for the display of maps. The next line is giving the code for the map that we want to generate of the United States.  The quoting function aes is for aesthetic mappings and the code that follows is describing what is making up the aesthetic mapping. We are pulling data from the USArrests data set, which was shortened to dat. The fill=murder command is telling R that we want the states to be shaded in according to the"Murder" data set.  The expand_limits code describes the x and y axis by longitude and latitude.  
 
 $$\\[2in]$$
+
+
+
+
+# Assignment 2 
+
+(Coming soon)
+
+
