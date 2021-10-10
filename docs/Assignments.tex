@@ -109,6 +109,10 @@
 \begin{document}
 \maketitle
 
+{
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
 This page will contain all the assignments you submit for the class.
 
 \hypertarget{instructions-for-all-assignments}{%
@@ -203,7 +207,7 @@ List the variables contained in the dataset \texttt{USArrests}.
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "Murder"   "Assault"  "UrbanPop" "Rape"
+## [1] "Murder"   "Assault"  "UrbanPop" "Rape"     "state"
 \end{verbatim}
 
 This command is telling me what the different variables in the USArrests
@@ -267,7 +271,14 @@ quartile, and why do you think R gives you the 1st Qu. and 3rd Qu.?
 ##  Median : 7.250   Median :159.0   Median :66.00   Median :20.10  
 ##  Mean   : 7.788   Mean   :170.8   Mean   :65.54   Mean   :21.23  
 ##  3rd Qu.:11.250   3rd Qu.:249.0   3rd Qu.:77.75   3rd Qu.:26.18  
-##  Max.   :17.400   Max.   :337.0   Max.   :91.00   Max.   :46.00
+##  Max.   :17.400   Max.   :337.0   Max.   :91.00   Max.   :46.00  
+##     state          
+##  Length:50         
+##  Class :character  
+##  Mode  :character  
+##                    
+##                    
+## 
 \end{verbatim}
 
 The average number of murder arrests per 100,000 residents is 7.788. The
@@ -367,8 +378,8 @@ Run this code:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{library}\NormalTok{(}\StringTok{\textquotesingle{}maps\textquotesingle{}}\NormalTok{) }
-\FunctionTok{library}\NormalTok{(}\StringTok{\textquotesingle{}ggplot2\textquotesingle{}}\NormalTok{) }
+\FunctionTok{library}\NormalTok{(maps) }
+\FunctionTok{library}\NormalTok{(ggplot2) }
 
 \FunctionTok{ggplot}\NormalTok{(dat, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{map\_id=}\NormalTok{state, }\AttributeTok{fill=}\NormalTok{Murder)) }\SpecialCharTok{+} 
   \FunctionTok{geom\_map}\NormalTok{(}\AttributeTok{map=}\FunctionTok{map\_data}\NormalTok{(}\StringTok{"state"}\NormalTok{)) }\SpecialCharTok{+} 
@@ -391,5 +402,10 @@ expand\_limits code describes the x and y axis by longitude and
 latitude.
 
 \[\\[2in]\]
+
+\hypertarget{assignment-2}{%
+\section{Assignment 2}\label{assignment-2}}
+
+(Coming soon)
 
 \end{document}
