@@ -308,13 +308,8 @@ $$\\[2in]$$
 
 
 
----
-title: "Exam 1"
-author: "Michaela rieser"
-date: "10/04/2021"
-output: html_document
----
 
+##Exam 1 
 
 # Instructions
 
