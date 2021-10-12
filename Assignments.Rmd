@@ -174,12 +174,11 @@ Answer: The library code loads the desired packages.  In this case, it is loadin
 
 
 # Assignment 2
-# Title: Assignment 2
 Subtitle: Crim 250: Statistics for the Social Sciences
 Name: Michaela Rieser
 Date: 09/23/2021
 
-Problem 1: Load data
+###Problem 1: Load data
 
 Read the data
 ```{r}
@@ -194,7 +193,7 @@ names(dat2)
 The variables are mjaje, cigever, alcever, age2, sexatract, speakenglish, irsex.
 
 
-# Problem 2: Variables
+### Problem 2: Variables
 
  Describe the variables in the data set.
 ```{r}
@@ -202,11 +201,11 @@ summary(dat2)
 ```
 All of the variables in our study have been made into quantitative variables. For each of the questions, the response was a numerical answer.  Even for the questions that could have been seen as categorical, the respondents answered with a number.  The responses to each question were coded into a numerical value.For example, one of the variables is sexual attraction, and the responses are "I am only attracted to the opposite sex", "I am mostly attracted to opposite sex", "I am equally attracted to males and females", "I am mostly attracted to the same sex", "I am only attracted to the same sex", and "I am not sure" all correspond to a numerical value.  This is useful because we are able to use quantitative variable techniques to learn more about the sample.  For example, we can calculate the mean and median because our responses have been translated into numbers. 
 
-# What is this data set about? Who collected the data, what kind of sample is it, and what was the purpose of generating the data?
+__What is this data set about? Who collected the data, what kind of sample is it, and what was the purpose of generating the data?__
 This data set is just a small sample taken from the 2019 National Survey of Drug Use and Health.  The National Survey on Drug Use and Health (NSDUH) was collected by the US Department of Health and Human Services.  NSDUH is a sample survey of the population of United States citizens aged 12 and older.  The goal of this survey is to generate a large statistical information data base on the use of alcohol, tobacco, drugs, and mental health in the United States.  The survey wants to track trends in substance use and mental illness.  For the purpose of this class, we only are looking at some of the data collected in this survey.  We are focused on looking at the trends and spread of the data collected about the age of first marijuana use, the age when individuals first started smoking cigarettes everyday, and the age of first alcohol use. We also are looking at the data that asks how well the respondent speaks English, their current age, their sexual attraction, and their gender. 
 
 
-#Problem 3: Age and gender
+###Problem 3: Age and gender
 
 What is the age distribution of the sample like? Make sure you read the codebook to know what the variable values mean.
 
@@ -214,12 +213,12 @@ The histogram does not directly express the years of age along the x axis.  The 
 The histogram allows for the visualization of the spread.  The data appears to be skewed left, but I think that this could just be a result of how the ages were grouped.  Of course the graph would appear to be skewed left when the second half of the age code encompasses ages 22 through 65+.  
 
 
-# Do you think this age distribution representative of the US population? Why or why  not?
+__Do you think this age distribution representative of the US population? Why or why  not?__
 No, I do not think that this age distribution is representative of the US population because 
 there is no representation of the population under 12 years of age.  Although these questions would not be appropriate to ask children, if the sampling was for all ages, then perhaps the age distribution would be representative of the US population.  Also, it would make more sense that there would more people under 25 because not all children reach adulthood. 
 
 
-# Is the sample balanced in terms of gender? If not, are there more females or males?
+__Is the sample balanced in terms of gender? If not, are there more females or males?__
 ```{r}
 counts <- table(dat2$irsex)
 barplot(counts, main="Gender Distribution", xlab="Gender", ylab="Frequency", names=c("Male", "Female"), ylim=c(0,300), col="sky blue")
@@ -239,23 +238,23 @@ table(dat2$irsex)
 
 I used both a bar plot and pie chart to look at the gender distribution.  From both graphs, I can see that the sample is not 50% men, 50% women.  There are more male responses in our sample than women.  However, the difference is only slight.  If there was an equal number of men (1) and women (2) in this study, the mean would be exactly 1.5.  However, the mean is slightly less than 1.5, it is 1.468.  Because the mean is pulled slightly closer to 1 (which is the numerical code for male respondent).Also, I was able to make a table of irsex and see how many respondents answered 1(male) or 2(female), 91 answered male and 80 answered female.
 
-# Use this code to draw a stacked bar plot to view the relationship between sex and age. What can you conclude from this plot?
+__Use this code to draw a stacked bar plot to view the relationship between sex and age. What can you conclude from this plot?__
 
 From a stacked bar plot, we can compare the age and sex distributions of the respondents simultaneously.  With this bar plot, we can compare how sex is distributed in each age category.  For example, in age category 8, which corresponds to respondent is 19 years old, we can see that there were much more female respondents than male (if there were any male at all).
 
 
-## Problem 4: Substance use
+### Problem 4: Substance use
 
-# For which of the three substances included in the data set (marijuana, alcohol, and cigarettes) do individuals tend to use the substance earlier?
+For which of the three substances included in the data set (marijuana, alcohol, and cigarettes) do individuals tend to use the substance earlier?
 ```{r}
 summary(dat2)
 ```
 To answer this question, I looked at both the minimum age and the average age for the first time trying each of these substances. The youngest that any of these respondents had ever tried alcohol was 5 years old, whereas the youngest that anyone had ever tried cigarettes or marijuana was 10 and 7, respectively.The average age at first alcohol drink was 14.95 or ~15 years old.  The average age at first cigarette was 17.65 years old and the average age of first time using marijuana was 15.99 or ~16. On average, individuals tend to use alcohol earliest.  
 
 
-## Problem 5: Sexual attraction
+###Problem 5: Sexual attraction
 
-# What does the distribution of sexual attraction look like? Is this what you expected?
+What does the distribution of sexual attraction look like? Is this what you expected?
 ```{r}
 counts <- table(dat2$sexatract)
 barplot(counts, ylim = c(0,150), main="Sexual Attraction/Orientation Distribution", xlab="Sexual Attraction", names=c("1", "2", "3", "4", " 5", "6", "97", "98","99"))
@@ -263,7 +262,7 @@ barplot(counts, ylim = c(0,150), main="Sexual Attraction/Orientation Distributio
 The majority of respondents are straight/only attracted to the opposite sex. For this variable, it is not helpful to look at the mean, because it is skewed due to the code 99 for skipped question.  By looking at both the bar plot and the median, Q1 and Q3, I can see that almost all of the data falls in the opposite sex only code of 1.  This is not what I expected at all.Especially today, in which there is a greater level of acceptance of LGBTQIA+ individuals, I would feel that the distribution would not be so centered around 1, only opposite sex attraction. 
 
 
-# What is the distribution of sexual attraction by gender? 
+__What is the distribution of sexual attraction by gender?__ 
 ```{r}
 tab.gendersexattract <- table(dat2$irsex, dat2$sexatract)
 barplot(tab.gendersexattract,
@@ -274,9 +273,9 @@ barplot(tab.gendersexattract,
 ```
 
 
-## Problem 6: English speaking
+###Problem 6: English speaking
 
-# What does the distribution of English speaking look like in the sample? Is this what you might expect for a random sample of the US population?
+What does the distribution of English speaking look like in the sample? Is this what you might expect for a random sample of the US population?
 ```{r}
 counts <- table(dat2$speakengl)
 barplot(counts, ylim = c(0,200), main="English Speaking Ability", xlab="Language Code ")
@@ -287,7 +286,7 @@ table(dat2$speakengl)
 ```
 Also, by making a table with the data from speakengl, I am able to see that 161 of the respondents answered that they speak English very well, in comparison to only 8 answering 2(well) and 2 answering 3(not well).  
 
-# Are there more English speaker females or males?
+__Are there more English speaker females or males?__
 ```{r}
 tab.genderspeakengl <- table(dat2$irsex, dat2$speakengl)
 barplot(tab.genderspeakengl,
@@ -309,9 +308,9 @@ $$\\[2in]$$
 
 
 
-##Exam 1 
+# Exam 1 
 
-# Instructions
+###Instructions
 
 a. Create a folder in your computer (a good place would be under Crim 250, Exams). 
 
@@ -325,7 +324,7 @@ datexam <- read.csv("fatal-police-shootings-data.csv")
 ```
 
 
-# Problem 1 (10 points)
+###Problem 1 (10 points)
 
 a. Describe the dataset. This is the source: https://github.com/washingtonpost/data-police-shootings . Write two sentences (max.) about this.
 
@@ -352,7 +351,7 @@ table(datexam$armed)
 
 __This is a very extensive and interesting list of weapons that the victims were armed with.  Three weapons that I was surprised to find in the armed variable were: air conditioner, railroad spikes, and flashlight.  Another weapon that was shocking was a "toy weapon".   __
 
-# Problem 2 (10 points)
+###Problem 2 (10 points)
 
 a. Describe the age distribution of the sample. Is this what you would expect to see?
 ```{r}
@@ -379,7 +378,7 @@ barplot(counts, main="Gender Distribution of Police Shooting Victims", xlab="Gen
 __Because gender is a categorical variable, I used a bar plot to look at the distribution of the same.  There are three categories for gender: female, male, and unknown gender. Looking at the table displaying the counts of male and female victims in union with the bar plot, it is clear that the number of male police shooting victims outweighs the number of female police shooting victims. I am not surprised by this, especially with the recent news and all of the reports I have heard about about male shooting victims.  3 victims had unknown gender, 293 were women, and 6298 were men. __
 
 
-# Problem 3 (10 points)
+###Problem 3 (10 points)
 
 a. How many police officers had a body camera, according to news reports? What proportion is this of all the incidents in the data? Are you surprised that it is so high or low?
 
@@ -398,7 +397,7 @@ __In 1058 incidents, the victim was feeling by car.  In 845 incidents, they were
 
 
 
-# Problem 4 (10 points) -  Answer only one of these (a or b).
+###Problem 4 (10 points) -  Answer only one of these (a or b).
 
 a. Describe the relationship between the variables "body camera" and "flee" using a stacked barplot. What can you conclude from this relationship? 
 
@@ -433,7 +432,7 @@ __NA stands for Native American on our box plot.  The box for "unknown" is missi
 
 
 
-# Extra credit (10 points)
+###Extra credit (10 points)
 
 a. What does this code tell us? 
 
