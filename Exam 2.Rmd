@@ -1,0 +1,100 @@
+---
+title: "Exam 2"
+author: "Michaela Rieser"
+date: "11/01/2021"
+output: html_document
+---
+
+
+# Instructions
+
+a. Create a folder in your computer (a good place would be under Crim 250, Exams). 
+
+b. Download the dataset from the Canvas website (sim.data.csv) onto that folder, and save your Exam 2.Rmd file in the same folder.
+
+c. Data description: This dataset provides (simulated) data about 200 police departments in one year. It contains information about the funding received by the department as well as incidents of police brutality. Suppose this dataset (sim.data.csv) was collected by researchers to answer this question: **"Does having more funding in a police department lead to fewer incidents of police brutality?"**
+d. Codebook:
+- funds: How much funding the police department received in that year in millions of dollars.
+- po.brut: How many incidents of police brutality were reported by the department that year.
+- po.dept.code: Police department code
+
+# Problem 1: EDA (10 points) 
+
+Describe the dataset and variables. Perform exploratory data analysis for the two variables of interest: funds and po.brut.
+
+```{r}
+dat <- read.csv(file = 'sim.data.csv')
+
+summary(dat)
+
+hist(dat$funds, main="Histogram of Funding (millions of dollars)", xlab="Amount of funding received per year", ylab="Frequency", xlim=c(0,100), ylim=c(0,100),col="yellow")
+
+hist(dat$po.brut, main="Incidents of police brutality", xlab="Number of Incidents", ylab="Frequency", xlim=c(0,50), ylim=c(0,100),col="red", breaks=12)
+
+```
+
+__This is a simulated data set about 200 police departments, each police department is coded and that is described by the variable po.brut.  This data set contains information about the funding that the department received (funds) in millions of dollars and the incidents of police brutality that were reported by the department in that year (po.brut).  Both the variables funds and po.brut are quantitative numerical variables that can be best visualized using quantitative data analysis plots such as histograms.  The average number of funds that police departments receive is $61.04 million dollars.  The histogram for funding appears to be have a relatively normal bell curve shape, with no right or left skew.  The average number of police brutality incidents is ~18, and the maximum number of incidents at any of the 200 police departments is 29 and the minimum amount of incidents at any of the departments is 0 incidents.  The histogram of police brutality incidents has more of a left skew, which is a better thing because those are the smaller values of incidents.__
+
+
+# Problem 2: Linear regression (30 points)
+
+a. Perform a simple linear regression to answer the question of interest. To do this, name your linear model "reg.output" and write the summary of the regression by using "summary(reg.output)". 
+
+```{r}
+reg.output <- lm(formula = po.brut~funds, data = dat)
+summary(reg.output)
+```
+
+__answer__
+
+b. Report the estimated coefficient, standard error, and p-value of the slope. Is the relationship between funds and incidents statistically significant? Explain.
+
+__The estimated coefficient (slope) is -0.367099. This slope means that for every 1 million dollar increase in funding, the number of police brutality incidents on average would decrease by 0.367099. The standard error for the slope is 0.004496 and the standard error for the intercept is 0.282503.  The p-value of the slope is 2x10^-16, which we can see from the significant codes is very significant. Three stars means that the p-value is highly signficiant. The extremely small p-values express for both slope and intercept express that the relationship between funding and incidents is very statistically significant.__
+
+c. Draw a scatterplot of po.brut (y-axis) and funds (x-axis). Right below your plot command, use abline to draw the fitted regression line, like this:
+```{r, fig.width=4, fig.height=4}
+# Remember to remove eval=FALSE!!
+plot(dat$funds,dat$po.brut, main = "Relationship between Funding and Police Brutality Incidents", xlab = "Funding (in millions of dollars)", ylab="Incidents of Police Brutality" )
+abline(reg.output, col = "red", lwd=2)
+cor(dat$funds, dat$po.brut)
+```
+Does the line look like a good fit? Why or why not?
+
+__Yes the line does look like a good fit for the data.  The relationship between  funding and incidents of police brutality looks linear tells me that a simple linear regression is a good model to fit this data set.  The scatterplot points appear to fall very well along the linear regression line.  The red line tells us that there is a strong negative correlation between police funding and police brutality incidents. In addition, the correlation between these two variables is -0.9854706, which also supports that there is a highly negative correlation between funding and police brutality incidents.__
+
+d. Are the four assumptions of linear regression satisfied? To answer this, draw the relevant plots. (Write a maximum of one sentence per assumption.) If not, what might you try to do to improve this (if you had more time)?
+```{r}
+#Linearity Assumption
+plot(reg.output, which=1)
+```
+__Looking at the residuals vs. fitted plot, the scatter plot smoother line that shows the average value of the residuals at each value of the fitted value, is not very flat, which means that there could be a non-linear trend to the residual, and the residuals seem to be closely following this line, meaning there could be a trend in the  residuals and the linearity assumption is not necessarily met (assumption1).__
+```{r}
+#Independence Assumption
+plot(dat$funds, reg.output$residuals, ylim=c(-15,15), main="Residuals vs. x", xlab="x, Funding in million of dollars", ylab="Residuals")
+abline(h = 0, lty="dashed")
+```
+__To check for error independence (which technically is not possible), we can look at the plot of residuals against x and check for patterns; the residuals have a slight hill and follow a curved pattern, so we can assume that the independence assumption is not met (assumption2).__  
+```{r}
+#Equal Variance Assumption
+plot(reg.output, which=3)
+```
+__The red line is clearly not flat and horizontal and there are significant trends on this plot, which means that the residuals/errors have non-constant variance and the equal variance assumption (assumption3) is not met.__   
+
+```{r}
+#Normal Population Assumption
+plot(reg.output, which=2)
+```
+
+__The Normal QQ plot shows that the points fall along in the middle of the graph, but curve off in the extremities, the tails do not lie along the line as well as they could, especially the lower left corner of the plot, so I cannot assume that the normality assumption is met (assumption4).__
+
+__Because the four assumptions are not met, but there seems to be a high negative linear correlation between the two variables, if I had more time I would before some sort of transformation to achieve linearity and fix my diagnostic plots.  Transforming the data using one of the possible transformation helps fix the diagnostics.  To achieve normality, I could determine which transformation to use by using the Box-Cox method. If I had more time to transform the data, I would run the code boxcox(reg.output) and look at the lambda value.  The lambda value would tell me which transformation to use fix my data.  With variables like wage and funding, it might be better to do log(funds), however this is just a hypothesis.  I would have to perform the actual transformation to determine which would work best.__ 
+
+e. Answer the question of interest based on your analysis.
+
+__The four assumptions of linearity are not met, however I do think that if I were to be able to perform one of the linear transformations, this data could be able to meet the assumptions of linearity.  Perhaps the linear model is not the best fit for this data, however, this would require much more analysis.  The correlation coefficient showed strong, negative linear correlation.  The R-squared value is extremely high as well.  The p-values are significant enough to reject the null hypothesis.  The null hypothesis states that the slope is zero, meaning that there is no relationship between funding (in millions) and number of police brutality incidents.  It is a little confusing because the the diagnostic plots look terrible, but the correlation, p-values, and scatter plot make me believe that there is a strong connection between the amount of funding in millions of dollars and incidents of police brutality.  I think that I can answer the question of interest (whether or not having more funding affects the number of incidents).  Based on my analysis, I can give a preliminary answer and say that there is a negative relationship between funding and the number of police brutality incidents, when there is more funding in a department, it is likely that the number of police brutality incidents would decrease (based on the slope and negative correlation).  However, more analysis should be done and data transformations should be done to really determine whether or not there is a strong enough relationship between these two variables. __
+
+# Problem 3: Data ethics (10 points)
+
+Describe the dataset. Considering our lecture on data ethics, what concerns do you have about the dataset? Once you perform your analysis to answer the question of interest using this dataset, what concerns might you have about the results?
+
+__The data set is simulated and does not include information on 200 real police departments.  This is a major major concern in interpreting the results from the data set.  How was this data set made?  It is important to know how a data set is collected, whether it is simulated or real.  It is important to know this in interpreting results.  However, because this is not a real data set, there are not any major ethical concerns with this exact data set.  If we were to have a data set with real information, it would be important to know if there was consent involved, if there was any bias in taking the sample, how the sample data was gathered (methodology).  There is a great deal to think about in concerning data ethics, but our sample is nice because it is simulated and does not have data on real people.  Lastly, a side note, I feel that it would be important to gather data on real police departments in order to interpret the results of this data set. In addition, it would be helpful to look at different variables as well to see if there are strong correlations between any other variables such as urban location and racial distribution.__
