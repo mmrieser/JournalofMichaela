@@ -1,4 +1,15 @@
+```{r}
+hist(dat2$age2, main="Histogram of Age", xlab="Coded Age", ylab="Frequency", xlim=c(0,20), ylim=c(0,80),col="yellow", breaks=10)
+```
+
+
+
+```{r}
+tab.agesex <- table(dat2$irsex, dat2$age2)
+barplot(tab.agesex,
+        main = "Age and Gender", ylim=c(0,80), 
+        xlab = "Age category", ylab = "Frequency",
+        legend.text = rownames(tab.agesex),
+        beside = FALSE) # Stacked bars (default)
+```
 .Rproj.user
-.Rhistory
-.RData
-.Ruserdata

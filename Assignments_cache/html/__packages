@@ -1,1 +1,6 @@
 base
+ggplot2
+dplyr
+ggrepel
+readr
+knitr
