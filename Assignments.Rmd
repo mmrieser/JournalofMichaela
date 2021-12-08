@@ -1262,7 +1262,6 @@ names(newupenndata)[names(newupenndata)=="crimes_total_sex_offenses_total"] <- "
 ```
 
 ```{r}
-install.packages("kableExtra")
 library(kableExtra)
 ```
 
