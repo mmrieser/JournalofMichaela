@@ -1163,7 +1163,7 @@ Michaela Rieser, Rachael Villari, Sara Whitelaw
 December 8, 2021
 ### Crime Distributions at Ivy League Institution 
 
-### 1 NTRODUCTION 
+### 1 INTRODUCTION 
   At the University level, it is important that crime trends are observed in relation to the external factors that may have an effect. Ivy League universities, being private institutions that receive billions of dollars in endowments, should have ample measures in place to control crime rates on campus to maintain the safety of students. In this report, we will observe the total crime trends between the University of Pennsylvania, Yale University, and Columbia University and then take a more specific look at sexual offense trends. These trends will be compared with external research that analyzes police funding and the implementation of Title IX. Ultimately, it is important that more causal research is conducted in this area to observe whether it is beneficial to have privately funded university police departments and whether to bolster Title IX power. The data used in this report contain the total crime data from 2001-2017 for the three Ivy League institutions mentioned above. 
 
 ### 2 EXPLORATORY DATA ANALYSIS 
