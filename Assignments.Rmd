@@ -1161,6 +1161,7 @@ You can save your plots out of R and into a final write up using the codes ggsav
 # CRIM250 Final Paper 
 Michaela Rieser, Rachael Villari, Sara Whitelaw 
 December 8, 2021
+
 ### Crime Distributions at Ivy League Institution 
 
 ### 1 INTRODUCTION 
