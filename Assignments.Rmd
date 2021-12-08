@@ -1263,17 +1263,6 @@ names(newupenndata)[names(newupenndata)=="crimes_total_sex_offenses_total"] <- "
 ```
 
 ```{r}
-library(kableExtra)
-```
-
-```{r}
-kbl(newupenndata)
-newupenndata %>%
-  kbl() %>%
-  kable_styling()
-```
-
-```{r}
 Totals <- c(213,14,246,6,0,215)
 Crime <- c('Aggravated_Assault', 'Arson', 'Motor_Theft', 'Non_Negligent', 'Negligent', 'sex_offenses')
 df <- data.frame(Totals, Crime)
@@ -1296,13 +1285,6 @@ names(newcolumbiadata)[names(newcolumbiadata)=="crimes_total_sex_offenses_total"
 ```
 
 ```{r}
-kbl(newcolumbiadata)
-newcolumbiadata %>%
-  kbl() %>%
-  kable_styling()
-```
-
-```{r}
 Totals <- c(152,7,62,5,0,196)
 Crime <- c('Aggravated_Assault', 'Arson', 'Motor_Theft', 'Non_Negligent', 'Negligent', 'sex_offenses')
 df <- data.frame(Totals, Crime)
@@ -1322,13 +1304,6 @@ names(newyaledata)[names(newyaledata)=="crimes_total_motor_vehicle_theft"] <- "M
 names(newyaledata)[names(newyaledata)=="crimes_total_murder_non_negligent_manslaughter"] <- "Non-Negligent Manslaughter"
 names(newyaledata)[names(newyaledata)=="crimes_total_negligent_manslaughter"] <- "Negligent Manslaughter"
 names(newyaledata)[names(newyaledata)=="crimes_total_sex_offenses_total"] <- "Sex Offenses"
-```
-
-```{r}
-kbl(newyaledata)
-newyaledata %>%
-  kbl() %>%
-  kable_styling()
 ```
 
 ```{r}
@@ -1363,9 +1338,30 @@ __3.2 PROPOSED CAUSAL DAG__
 8. Why: Black students for disarmament at Yale. bsdy. (n.d.). Retrieved December 7, 2021, from https://www.defundypd.com/why. 
 9. Yale Investments Office. (n.d.). Retrieved December 07, 2021, from https://investments.yale.edu/
 
+### Appendix 
+```{r}
+library(kableExtra)
+```
 
+```{r}
+kbl(newupenndata)
+newupenndata %>%
+  kbl() %>%
+  kable_styling()
+```
+```{r}
+kbl(newcolumbiadata)
+newcolumbiadata %>%
+  kbl() %>%
+  kable_styling()
+```
 
-
+```{r}
+kbl(newyaledata)
+newyaledata %>%
+  kbl() %>%
+  kable_styling()
+```
 
 
 
